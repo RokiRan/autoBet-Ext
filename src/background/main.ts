@@ -1,4 +1,5 @@
 import { onMessage, sendMessage } from 'webext-bridge'
+import { io } from 'socket.io-client'
 import type { Tabs } from 'webextension-polyfill'
 
 // only on dev mode
@@ -51,4 +52,11 @@ onMessage('get-current-tab', async () => {
       title: undefined,
     }
   }
+})
+
+// socket.io example
+const socket = io('https://socket.io')
+socket.io.on('ping', () => {
+  // ...
+  console.log('ping')
 })
